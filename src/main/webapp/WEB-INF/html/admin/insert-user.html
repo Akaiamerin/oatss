@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网上机票销售系统</title>
+    <link rel="stylesheet" th:href="@{/static/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/style.css}">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div th:replace="index.html::header"></div>
+
+        <div th:replace="index.html::aside"></div>
+
+        <div class="page-wrapper">
+            <div class="main-content">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-box ad-title-box-use">
+                                <h2 style="text-align: center">增加用户</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="from-wrapper">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="card table-card">
+                                <div class="card-header pb-0"
+                                     style="display: flex; flex-direction: column; align-items: center">
+                                </div>
+
+                                <div class="card-body">
+                                    <form class="separate-form" th:action="@{/admin/insert-user}" method="post">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="row"
+                                                 style="display: flex; flex-direction: column; align-items: center">
+                                                <div>
+                                                    <div class="form-group" style="display: inline-block">
+                                                        <span>用户名</span>
+                                                        <input class="form-control" style="width: 400px" type="text"
+                                                               name="username" placeholder="请输入用户名">
+                                                    </div>
+
+                                                    <div class="form-group" style="display: inline-block">
+                                                        <span>密码</span>
+                                                        <input class="form-control" style="width: 400px" type="text"
+                                                               name="password" placeholder="请输入密码">
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <div class="form-group" style="display: inline-block">
+                                                        <span>姓名</span>
+                                                        <input class="form-control" style="width: 400px" type="text"
+                                                               name="name" placeholder="请输入姓名">
+                                                    </div>
+
+                                                    <div class="form-group" style="display: inline-block">
+                                                        <span>身份证号码</span>
+                                                        <input class="form-control" style="width: 400px" type="text"
+                                                               name="idCard" placeholder="请输入身身份证号码">
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <div class="form-group" style="display: inline-block">
+                                                        <span>手机号</span>
+                                                        <input class="form-control" style="width: 400px" type="text"
+                                                               name="telephone" placeholder="请输入手机号">
+                                                    </div>
+
+                                                    <div class="form-group" style="display: inline-block">
+                                                        <span>管理角色</span>
+                                                        <input class="form-control" style="width: 400px" type="text"
+                                                               name="role" placeholder="请输入管理角色">
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <button class="ad-btn">提交</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/static/js/bootstrap.min.js}"></script>
+    <script th:src="@{/static/js/jquery.min.js}"></script>
+    <script th:src="@{/static/js/custom.js}"></script>
+</body>
+
+</html>

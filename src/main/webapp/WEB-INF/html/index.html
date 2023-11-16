@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网上机票销售系统</title>
+    <link rel="stylesheet" th:href="@{/static/css/style.css}">
+</head>
+
+<body>
+    <header class="header-wrapper main-header" th:fragment="header">
+        <div class="header-inner-wrapper">
+            <div class="logo-wrapper">
+                <img th:src="@{/static/img/logo.png}" alt="">
+            </div>
+
+            <div class="header-right">
+                <div class="header-left"></div>
+
+                <div class="header-controls">
+                    <div class="user-info-wrapper header-links">
+                        <a class="user-info" th:switch="${session.user.getRole()}">
+                            <img class="user-png" th:case="'admin'" th:src="@{/static/img/admin.png}" alt="">
+
+                            <img class="user-png" th:case="'user'" th:src="@{/static/img/user.png}" alt="">
+                        </a>
+
+                        <div class="user-info-box">
+                            <div class="drop-down-header">
+                                <div th:text="${session.user.getName()}"></div>
+
+                                <div th:switch="${session.user.getRole()}">
+                                    <div th:case="'admin'">管理员</div>
+
+                                    <div th:case="'user'">用户</div>
+                                </div>
+
+                                <div class="ad-a-text">
+                                    <a th:href="@{/auth/logout}">退出登录</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <aside class="sidebar-wrapper" th:fragment="aside">
+        <div class="side-menu-wrap">
+            <ul class="main-menu">
+                <li sec:authorize="hasRole('admin')">
+                    <a style="display: flex; flex-direction: column; align-items: center"
+                       th:href="@{/admin/select-ticket}">
+                        <span class="menu-text">航班信息管理</span>
+                    </a>
+                </li>
+
+                <li sec:authorize="hasRole('admin')">
+                    <a style="display: flex; flex-direction: column; align-items: center" th:href="@{/admin/record}">
+                        <span class="menu-text">订单记录管理</span>
+                    </a>
+                </li>
+
+                <li sec:authorize="hasRole('admin')">
+                    <a style="display: flex; flex-direction: column; align-items: center"
+                       th:href="@{/admin/select-user}">
+                        <span class="menu-text">用户信息管理</span>
+                    </a>
+                </li>
+
+                <li sec:authorize="hasRole('admin')">
+                    <a style="display: flex; flex-direction: column; align-items: center"
+                       th:href="@{/admin/random-ticket}">
+                        <span class="menu-text"> </span>
+                    </a>
+                </li>
+
+                <li sec:authorize="hasRole('user')">
+                    <a style="display: flex; flex-direction: column; align-items: center"
+                       th:href="@{/user/select-ticket}">
+                        <span class="menu-text">航班信息</span>
+                    </a>
+                </li>
+
+                <li sec:authorize="hasRole('user')">
+                    <a style="display: flex; flex-direction: column; align-items: center" th:href="@{/user/my-ticket}">
+                        <span class="menu-text">我的机票</span>
+                    </a>
+                </li>
+
+                <li sec:authorize="hasRole('user')">
+                    <a style="display: flex; flex-direction: column; align-items: center" th:href="@{/user/my-user}">
+                        <span class="menu-text">我的信息</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+</body>
+
+</html>
